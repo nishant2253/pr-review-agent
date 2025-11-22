@@ -28,7 +28,7 @@ async def fetch_pr_diff(owner: str, repo: str, pr_number: int) -> str:
 
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/pulls/{pr_number}"
 
-    logger.info(f"📡 Fetching PR diff for {owner}/{repo}#{pr_number}")
+    logger.info(f" Fetching PR diff for {owner}/{repo}#{pr_number}")
 
     async with httpx.AsyncClient(timeout=20) as client:
         resp = await client.get(url, headers=headers)
@@ -40,5 +40,5 @@ async def fetch_pr_diff(owner: str, repo: str, pr_number: int) -> str:
         logger.error(f"❌ GitHub API error {resp.status_code}: {resp.text}")
         raise Exception(f"GitHub API error: {resp.status_code}")
 
-    logger.info("✅ Successfully fetched PR diff from GitHub")
+    logger.info("Successfully fetched PR diff from GitHub")
     return resp.text

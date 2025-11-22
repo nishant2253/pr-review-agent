@@ -29,7 +29,7 @@ def _build_diff_text(parsed_diff: List[Dict[str, Any]]) -> str:
 async def _run_multi_agent_review(parsed_diff: List[Dict[str, Any]]) -> ReviewResponse:
     diff_text = _build_diff_text(parsed_diff)
 
-    logger.info("🚀 Running multi-agent review...")
+    logger.info("Running multi-agent review...")
 
     # Create async tasks for each agent
     logic_task = run_logic_agent(diff_text)

@@ -48,7 +48,7 @@ Here is the diff:
 {diff_text}
 """.strip()
 
-    logger.info(f"🤖 Calling agent: {role_description} ...")
+    logger.info(f"Calling agent: {role_description} ...")
 
     # --- LLM CALL ---
     try:

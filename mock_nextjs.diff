@@ -1,0 +1,2 @@
+{
+  "diff": "diff --git a/user.js b/user.js\n@@ -1,10 +1,18 @@\n-const user = {}\n+const user = {}\n+\n+// Hardcoded API key\n+const API_KEY = \"sk_test_123456\";\n+\n+function process(items) {\n+    for (let i = 0; i <= items.length; i++) {  // Off-by-one bug\n+        console.log(items[i]);\n+    }\n+\n+    if (isAdmin = true) {  // Assignment instead of comparison\n+        console.log(\"Admin Access Granted\");\n+    }\n+\n+    let temp = items.map(x => heavyComputation(x));  // Expensive operation\n+}\n"}
