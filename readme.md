@@ -20,6 +20,18 @@ Built entirely in **FastAPI**, **LangChain**, and the **Gemini LLM**, this backe
 
 ---
 
+## 🎥 Demo Video
+
+Watch the full demonstration of the PR Review Agent in action:
+
+[![PR Review Agent Demo](https://img.youtube.com/vi/KcGWHJFcSpE/maxresdefault.jpg)](https://youtu.be/KcGWHJFcSpE)
+
+**[▶️ Watch on YouTube](https://www.youtube.com/watch?v=KcGWHJFcSpE)**
+
+> Replace `YOUR_VIDEO_ID` with your actual YouTube video ID
+
+---
+
 ## ⭐ 2. High-Level Architecture
 
 ```
@@ -104,15 +116,19 @@ pr-review-agent/
 When a diff arrives, the orchestrator triggers:
 
 ### ✔ Logic Agent
+
 Detects incorrect conditions, missing edge cases, incorrect returns, off-by-one errors.
 
 ### ✔ Readability Agent
+
 Flags unclear names, deeply nested code, missing comments, inconsistent style.
 
 ### ✔ Performance Agent
+
 Identifies heavy loops, repeated calculations, I/O bottlenecks, N+1 patterns.
 
 ### ✔ Security Agent
+
 Finds insecure inputs, hard-coded secrets, weak crypto usage, missing auth checks.
 
 ### ⚡ How They Run in Parallel
@@ -139,6 +155,7 @@ This cuts latency by **75%**, giving ultra-fast reviews.
 Input: manually provided unified diff.
 
 **Request:**
+
 ```json
 {
   "diff": "diff --git a/app.py b/app.py ..."
@@ -154,6 +171,7 @@ Input: manually provided unified diff.
 Fetches diff from GitHub automatically and runs full review.
 
 **Request body:**
+
 ```json
 {
   "owner": "octocat",
@@ -169,28 +187,37 @@ Fetches diff from GitHub automatically and runs full review.
 ## ⭐ 6. Important Files Explained
 
 ### `github_service.py`
+
 Fetches PR diff using:
+
 ```
 Accept: application/vnd.github.v3.diff
 ```
+
 Fully async, logs every step.
 
 ### `base_agent.py`
+
 The brain of every agent:
+
 - Builds structured prompts
 - Calls Gemini using `ainvoke()`
 - Ensures output is pure JSON
 - Handles failures gracefully
 
 ### `review_orchestrator.py`
+
 Main orchestrator that:
+
 - Parses diff
 - Runs agent tasks in parallel
 - Aggregates comments
 - Returns final `ReviewResponse`
 
 ### `aggregator_agent.py`
+
 Responsible for:
+
 - Severity normalization
 - Deduplication
 - Sorting comments
@@ -201,6 +228,7 @@ Responsible for:
 ## ⭐ 7. How to Run the Project Locally
 
 ### 1. Clone repository
+
 ```bash
 git clone <your-repo>
 cd pr-review-agent
@@ -209,12 +237,14 @@ cd pr-review-agent
 ### 2. Create virtual environment
 
 **Using conda:**
+
 ```bash
 conda create -n pr-agent python=3.10
 conda activate pr-agent
 ```
 
 **Or using venv:**
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # On Linux/Mac
@@ -222,6 +252,7 @@ source venv/bin/activate  # On Linux/Mac
 ```
 
 ### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -229,6 +260,7 @@ pip install -r requirements.txt
 ### 4. Create `.env` file
 
 Copy `.env.example`:
+
 ```bash
 cp .env.example .env
 ```
@@ -236,11 +268,13 @@ cp .env.example .env
 Set values inside (see section 8 below).
 
 ### 5. Run FastAPI backend
+
 ```bash
 uvicorn app.main:app --reload
 ```
 
 Server will run at:
+
 ```
 http://127.0.0.1:8000
 ```
@@ -265,6 +299,7 @@ GITHUB_TOKEN=ghp_yourtokenhere
 ## ⭐ 9. Testing the APIs
 
 ### Test Manual Diff Review
+
 ```bash
 curl -X POST http://127.0.0.1:8000/review/diff \
   -H "Content-Type: application/json" \
@@ -272,6 +307,7 @@ curl -X POST http://127.0.0.1:8000/review/diff \
 ```
 
 ### Test GitHub PR Review
+
 ```bash
 curl -X POST http://127.0.0.1:8000/review/pr \
   -H "Content-Type: application/json" \
