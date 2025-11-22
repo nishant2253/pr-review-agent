@@ -28,8 +28,6 @@ Watch the full demonstration of the PR Review Agent in action:
 
 **[▶️ Watch on YouTube](https://www.youtube.com/watch?v=KcGWHJFcSpE)**
 
-> Replace `YOUR_VIDEO_ID` with your actual YouTube video ID
-
 ---
 
 ## ⭐ 2. High-Level Architecture
