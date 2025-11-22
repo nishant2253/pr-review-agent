@@ -1,0 +1,92 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.db
+*.sqlite3
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+
+# Conda environment folders
+conda-env/
+.conda/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+wheels/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+*.cover
+coverage.xml
+pytest_cache/
+.cache/
+.pytest_cache/
+
+# -------------------------
+# Environment Variables
+# -------------------------
+.env
+.env.*       # any env variants
+!env.example # but keep template
+
+# -------------------------
+# FastAPI + Uvicorn Logs
+# -------------------------
+*.log
+*.pid
+
+# -------------------------
+# IDE / Editor Specific
+# -------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -------------------------
+# OS Generated Files
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Project Specific
+# -------------------------
+
+# Gemini or API cache (if any)
+*.cache
+
+# Python language server
+.pyright/
+
+# Local artifacts
+tmp/
+temp/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
